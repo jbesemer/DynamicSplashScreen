@@ -16,31 +16,29 @@ using System.Windows.Shapes;
 
 namespace DynamicSplashScreen
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
-            App.splashScreen.AddMessage("Loading main window");
-            DoSomethingThatTakesALongTime();
-            App.splashScreen.AddMessage("Loading something Witty");
-            DoSomethingElseThatTakesALongTime();
-            //This will probably never actually get seen
-            App.splashScreen.AddMessage("Done!");
-            App.splashScreen.LoadComplete();
-            InitializeComponent();
-        }
+	/// <summary>
+	/// Interaction logic for MainWindow.xaml
+	/// </summary>
+	public partial class MainWindow : Window
+	{
+		public MainWindow()
+		{
+			InitializeComponent();
+		}
 
-        private static void DoSomethingThatTakesALongTime()
-        {
-            Thread.Sleep(5000);
-        }
+		private void Window_Loaded( object sender, RoutedEventArgs e )
+		{
+			App.SplashScreen.SetText( "Loading main window" );
+			for( int i = 0; i < 5; i++ )
+			{
+				Thread.Sleep( 750 );
+				App.SplashScreen.SetText( $"Loading DLL {i}" );
+			}
 
-        private static void DoSomethingElseThatTakesALongTime()
-        {
-            Thread.Sleep(5000);
-        }
-    }
+			App.SplashScreen.SetText( "Done!" );
+			App.SplashScreen.Shutdown();
+			// window.app.mainwindow is now the splash screen
+			var w = App.Current.MainWindow;
+		}
+	}
 }
