@@ -53,9 +53,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AnimatedSplashScreenWindow.xaml.cs">
-      <DependentUpon>AnimatedSplashScreenWindow.xaml</DependentUpon>
+    <Compile Include="SplashScreenWindow.xaml.cs">
+      <DependentUpon>SplashScreenWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ISplashScreen.cs" />
+    <Compile Include="SplashScreenThread.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -68,7 +70,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="AnimatedSplashScreenWindow.xaml">
+    <Page Include="SplashScreenWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -102,6 +104,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\IMG_1532.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Splash_Screen_CLA_1.0.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
